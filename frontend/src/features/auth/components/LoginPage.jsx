@@ -5,11 +5,6 @@ import { Label } from "@/components/ui/label"
 import { useAuth } from "@/shared/providers/AuthContext"
 import getAuthErrorMessage from "../utils/getAuthErrorMessage"
 
-const DEMO_CREDENTIALS = {
-  email: "demo@persianas.com",
-  password: "Demo1234",
-}
-
 export default function LoginPage({ onAuthenticated }) {
   const { login, register } = useAuth()
   const [isRegistering, setIsRegistering] = useState(false)
@@ -45,12 +40,6 @@ export default function LoginPage({ onAuthenticated }) {
     setFormError(null)
   }
 
-  function fillDemoCredentials() {
-    setEmail(DEMO_CREDENTIALS.email)
-    setPassword(DEMO_CREDENTIALS.password)
-    setFormError(null)
-  }
-
   return (
     <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-10 text-zinc-50">
       <section className="w-full max-w-sm rounded-xl border border-zinc-800 bg-zinc-950/60 p-6 shadow-2xl shadow-black/30">
@@ -77,9 +66,6 @@ export default function LoginPage({ onAuthenticated }) {
           </Button>
         </form>
 
-        <Button className="mt-3 h-10 w-full border-zinc-700 bg-zinc-900 text-zinc-200 hover:bg-zinc-800 hover:text-white" onClick={fillDemoCredentials} type="button" variant="outline">
-          Credenciales Demo / Relleno Rápido
-        </Button>
         <p className="mt-6 text-center text-sm text-zinc-400">
           {isRegistering ? "¿Ya tenés cuenta?" : "¿No tenés cuenta?"}
           <Button className="ml-1 h-auto p-0 text-blue-400 hover:bg-transparent hover:text-blue-300" onClick={toggleMode} type="button" variant="link">

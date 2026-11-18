@@ -62,17 +62,6 @@ it("traduce errores de credenciales de Firebase", async () => {
   expect(await screen.findByRole("alert")).toHaveTextContent("El correo o la contraseña no son correctos.")
 })
 
-it("rellena las credenciales demo sin iniciar sesión", async () => {
-  const user = userEvent.setup()
-  renderLoginPage()
-
-  await user.click(screen.getByRole("button", { name: "Credenciales Demo / Relleno Rápido" }))
-
-  expect(screen.getByLabelText("Correo electrónico")).toHaveValue("demo@persianas.com")
-  expect(screen.getByLabelText("Contraseña")).toHaveValue("Demo1234")
-  expect(authMocks.login).not.toHaveBeenCalled()
-})
-
 it("inicia el splash después de una autenticación exitosa", async () => {
   const user = userEvent.setup()
   const onAuthenticated = vi.fn()
